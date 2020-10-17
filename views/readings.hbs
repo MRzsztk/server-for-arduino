@@ -2,12 +2,40 @@
 the readings list has {{readings.length}} entries.
 <div class="readings-container">    
 <h1 class="header1">soil moisture readings</h1>
+<canvas id="moistureChart" width="1000" height="200"></canvas>
  <div class="readings-content">
      {{#each readings}}
 <p class = "list-entry">
-probe: {{this.probe}} moisture: {{this.moisture}}% time: {{this.time}}.
+probe: <span class = "probe">{{this.probe}}</span> moisture: <span class = "moisture">{{this.moisture}}</span>% time: <span class = "time">{{this.time}}</span>.
 </p>
 {{/each}}
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script>
+var ctx = document.getElementById('moistureChart');
+let labelArray = [];
+let dataArray=[];
+let labels = document.querySelectorAll('.time');
+labels.forEach(label => { labelArray.push(label.innerText) });
+let data = document.querySelectorAll('.moisture');
+data.forEach(value => { dataArray.push(value.innerText) });
+console.log(dataArray)
+
+var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: labelArray,
+        datasets: [{
+            fill: false,
+            label: 'moisture chart',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: dataArray
+        }], 
+    },
+
+    options: {}
+});
+</script>
 </div>
 </div>

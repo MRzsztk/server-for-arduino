@@ -1,4 +1,5 @@
 const express = require('express');
+var Chart = require('chart.js');
 const MoistureReading = require('../models/moistureReading');
 const router = express.Router();
 
