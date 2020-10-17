@@ -1,0 +1,13 @@
+<div>
+the readings list has {{readings.length}} entries.
+<div class="readings-container">    
+<h1 class="header1">soil moisture readings</h1>
+ <div class="readings-content">
+     {{#each readings}}
+<p class = "list-entry">
+probe: {{this.probe}} moisture: {{this.moisture}}% time: {{this.time}}.
+</p>
+{{/each}}
+</div>
+</div>
+</div>
